@@ -1,18 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Register extends StatefulWidget {
+class LogIn extends StatefulWidget {
   @override
-  _RegisterState createState() => _RegisterState();
+  _LogInState createState() => _LogInState();
 }
 
-class _RegisterState extends State<Register> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController addressController = TextEditingController();
+class _LogInState extends State<LogIn> {
+  TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  TextEditingController cpasswordController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,12 +16,12 @@ class _RegisterState extends State<Register> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              padding: EdgeInsets.fromLTRB(40.0, 50.0, 0.0, 0.0),
+              padding: EdgeInsets.fromLTRB(40.0, 100.0, 0.0, 0.0),
               child: Text(
-                'REGISTRATION',
+                'LOGIN',
                 style: TextStyle(
                     color: Colors.green,
-                    fontSize: 30.0,
+                    fontSize: 90.0,
                     fontWeight: FontWeight.bold),
               ),
             ),
@@ -35,9 +30,9 @@ class _RegisterState extends State<Register> {
               child: Column(
                 children: <Widget>[
                   TextField(
-                    controller: nameController,
+                    controller: usernameController,
                     decoration: InputDecoration(
-                        labelText: 'Name',
+                        labelText: 'User Name',
                         labelStyle: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20.0,
@@ -45,30 +40,7 @@ class _RegisterState extends State<Register> {
                         focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.green))),
                   ),
-                  SizedBox(height: 15.0),
-                  TextField(
-                    controller: emailController,
-                    decoration: InputDecoration(
-                        labelText: 'Email',
-                        labelStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0,
-                            color: Colors.grey),
-                        focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.green))),
-                  ),
-                  SizedBox(height: 15.0),
-                  TextField(
-                    controller: addressController,
-                    decoration: InputDecoration(
-                        labelText: 'Adress',
-                        labelStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0,
-                            color: Colors.grey),
-                        focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.green))),
-                  ),
+                  SizedBox(height: 20.0),
                   TextField(
                     controller: passwordController,
                     decoration: InputDecoration(
@@ -82,35 +54,45 @@ class _RegisterState extends State<Register> {
                     obscureText: true,
                   ),
                   SizedBox(height: 5.0),
-                  TextField(
-                    controller: cpasswordController,
-                    decoration: InputDecoration(
-                        labelText: 'Confirm Password',
-                        labelStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0,
-                            color: Colors.grey),
-                        focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.green))),
-                    obscureText: true,
-                  ),
+                  Container(
+                      alignment: Alignment(1.0, 0.0),
+                      padding: EdgeInsets.only(top: 15.0, right: 10.0),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).pushNamed('/forgot_password');
+                        },
+                        child: Text(
+                          'Forgot Password',
+                          style: TextStyle(
+                              color: Colors.green,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                              fontStyle: FontStyle.italic,
+                              decoration: TextDecoration.underline),
+                        ),
+                      )),
                   SizedBox(height: 30.0),
-                  FlatButton(
-                    color: Colors.green,
-                    onPressed: () {
-                      if (nameController.text.toString().length >= 20) {
-                        print('Invalid Name / Password');
-                      }
-                      if (nameController.text.toString().isEmpty) {
-                        print('Name is required');
-                      }
-                    },
-                    child: Text(
-                      'Submit',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold),
+                  Container(
+                    height: 50.0,
+                    child: Material(
+                      borderRadius: BorderRadius.circular(20.0),
+                      shadowColor: Colors.greenAccent,
+                      color: Colors.green,
+                      elevation: 7.0,
+                      child: GestureDetector(
+                        onTap: () {
+                          print('User_Name: ${usernameController.text}, Password: ${passwordController.text}');
+                        },
+                        child: Center(
+                          child: Text(
+                            'LOGIN',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                   SizedBox(height: 15.0),
@@ -136,21 +118,21 @@ class _RegisterState extends State<Register> {
                 ],
               ),
             ),
-            SizedBox(height: 60.0),
+            SizedBox(height: 80.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Have an Account ?',
+                  'New In Here ?',
                   style: TextStyle(color: Colors.black, fontSize: 20.0),
                 ),
                 SizedBox(width: 10.0),
                 InkWell(
                   onTap: () {
-                    Navigator.pop(context, '/login');
+                    Navigator.pushNamed(context, '/register');
                   },
                   child: Text(
-                    'Log In',
+                    'Register',
                     style: TextStyle(
                         color: Colors.green,
                         fontSize: 20.0,
