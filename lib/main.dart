@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pagesample/forget_password.dart';
 import 'Register.dart';
 import 'home_message.dart';
+import 'forget_password.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,7 +19,8 @@ class MyApp extends StatelessWidget {
       ),
       routes: <String, WidgetBuilder>{
         '\register': (BuildContext context) => Register(),
-        '\home_message': (BuildContext context) => Home()
+        '\home_message': (BuildContext context) => Home(),
+        '\forgot_password': (BuildContext context) => Forgot()
       },
       home: logIn(),
     );
@@ -30,9 +33,14 @@ class logIn extends StatefulWidget {
 }
 
 class _logInState extends State<logIn> {
+  GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+  String _username;
+  String _password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -51,6 +59,8 @@ class _logInState extends State<logIn> {
               child: Column(
                 children: <Widget>[
                   TextField(
+                    onChanged: (c) => c.isEmpty ? 'Password is required' : null,
+                   // onSaved: (s) => _username = s,
                     decoration: InputDecoration(
                         labelText: 'User Name',
                         labelStyle: TextStyle(
@@ -62,6 +72,8 @@ class _logInState extends State<logIn> {
                   ),
                   SizedBox(height: 20.0),
                   TextField(
+                    onChanged: (c) => c.isEmpty ? 'Password is required' : null,
+                   // onSaved: (s) => _password = s,
                     decoration: InputDecoration(
                         labelText: 'Password',
                         labelStyle: TextStyle(
@@ -77,11 +89,16 @@ class _logInState extends State<logIn> {
                       alignment: Alignment(1.0, 0.0),
                       padding: EdgeInsets.only(top: 15.0, right: 10.0),
                       child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).pushNamed('\forgot_password');
+                        },
                         child: Text(
                           'Forgot Password',
                           style: TextStyle(
                               color: Colors.green,
                               fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                              fontStyle: FontStyle.italic,
                               decoration: TextDecoration.underline),
                         ),
                       )),
