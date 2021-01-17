@@ -6,6 +6,7 @@ class Forgot extends StatefulWidget {
 }
 
 class _ForgotState extends State<Forgot> {
+
   @override
   Widget build(BuildContext context) {
     return Container(

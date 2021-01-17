@@ -6,6 +6,9 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
+
+  
+
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   @override
@@ -81,7 +84,21 @@ class _LogInState extends State<LogIn> {
                       elevation: 7.0,
                       child: GestureDetector(
                         onTap: () {
-                          print('User_Name: ${usernameController.text}, Password: ${passwordController.text}');
+                          if (usernameController.text.toString().length >= 20) {
+                            print('Invalid Name / Password');
+                            return;
+                          }
+                          if (passwordController.text.toString().isEmpty) {
+                            print('password is required');
+                            return;
+                          }
+                          // if (passwordController.text.toString().isNotEmpty &&
+                          //     usernameController.text.toString().length <= 20) {
+                            Navigator.of(context).pushNamed('/home_message');
+                          // }
+
+                          // print(
+                          //     'User_Name: ${usernameController.text}, Password: ${passwordController.text}');
                         },
                         child: Center(
                           child: Text(
