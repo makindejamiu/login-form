@@ -12,9 +12,10 @@ class _HomeState extends State<Home> {
     return Scaffold(
         body: ListView(
       children: <Widget>[
-        Padding(
-          padding: EdgeInsets.fromLTRB(15, 25, 15, 0),
-        ),
+        // Padding(
+        //   padding: EdgeInsets.fromLTRB(15, 25, 15, 0),
+        //   child: ,
+        // ),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
@@ -39,25 +40,49 @@ class _HomeState extends State<Home> {
             ),
           ),
         ),
+        SizedBox(height: 15.0),
         Container(
-            child: ListView(
-              primary: false,
+            // child: ListView(
+            child: Column(
+            //  primary: false,
               children: [
                 messageformat('assets/img1.jpg', 'Tunde',
                     'Are you comming or not', '12:00', '4'),
+                    SizedBox(height: 15.0),
                 messageformat('assets/img3.jpg', 'Dominic',
                     'Are you comming or not', '12:00', '4'),
+                    SizedBox(height: 15.0),
                 messageformat('assets/img2.png', 'Tunde',
                     'Are you comming or not', '12:00', '4'),
+                    SizedBox(height: 15.0),
                 messageformat('assets/icon.jpg', 'Tunde',
                     'Are you comming or not', '12:00', '4'),
+                    SizedBox(height: 15.0),
                 messageformat('assets/img1.jpg', 'Tunde',
                     'Are you comming or not', '12:00', '4'),
+                    SizedBox(height: 15.0),
                 messageformat('assets/icon.jpg', 'Tunde',
                     'Are you comming or not', '12:00', '4'),
+                    SizedBox(height: 15.0),
                 messageformat('assets/img2.png', 'Tunde',
                     'Are you comming or not', '12:00', '4'),
+                    SizedBox(height: 15.0),
                 messageformat('assets/img3.jpg', 'Tunde',
+                    'Are you comming or not', '12:00', '4'),
+                    SizedBox(height: 15.0),
+                messageformat('assets/img2.png', 'Tunde',
+                    'Are you comming or not', '12:00', '4'),
+                    SizedBox(height: 15.0),
+                messageformat('assets/img2.png', 'Tunde',
+                    'Are you comming or not', '12:00', '4'),
+                    SizedBox(height: 15.0),
+                messageformat('assets/img2.png', 'Tunde',
+                    'Are you comming or not', '12:00', '4'),
+                    SizedBox(height: 15.0),
+                messageformat('assets/img2.png', 'Tunde',
+                    'Are you comming or not', '12:00', '4'),
+                    SizedBox(height: 15.0),
+                messageformat('assets/img2.png', 'Tunde',
                     'Are you comming or not', '12:00', '4')
               ],
             ),
@@ -72,18 +97,22 @@ Widget messageformat(String img, String name, String submessage, String time,
   return Padding(
     padding: EdgeInsets.only(left: 15, right: 15),
     child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Hero(
-                  tag: img,
-                  child: Image(
+              // Hero(
+              //     tag: img,
+                  // child: 
+                  Image(
                       image: AssetImage(img),
                       fit: BoxFit.cover,
                       height: 60,
-                      width: 60)),
+                      width: 60
+                    ),
+                      // ),
               SizedBox(width: 15.0),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,7 +147,7 @@ Widget messageformat(String img, String name, String submessage, String time,
               color: Colors.green,
               child: Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(80.0)),
+                  borderRadius: BorderRadius.circular(50.0)),
               child:  Center(child: Text(
                 notification,
                 style: TextStyle(color: Colors.white, fontSize: 9.0),
