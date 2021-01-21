@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
@@ -10,26 +12,25 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ListView(
-      children: <Widget>[
-        // Padding(
-        //   padding: EdgeInsets.fromLTRB(15, 25, 15, 0),
-        //   child: ,
-        // ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-            Text(
-              'Message',
-              style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(width: 80.0),
+        appBar: AppBar(
+          title: Text(
+            'Message',
+              style: TextStyle(fontSize: 30.0,
+               fontWeight: FontWeight.bold,
+               color: Colors.white),
+          ),
+          actions: [
             IconButton(
               icon: Icon(Icons.notifications),
               onPressed: () {},
             )
           ],
         ),
+
+        body: SafeArea(
+
+        child: ListView(
+      children: <Widget>[
         Padding(
           padding: EdgeInsets.only(left: 15, right: 15, top: 30),
           child: TextField(
@@ -47,55 +48,43 @@ class _HomeState extends State<Home> {
             //  primary: false,
               children: [
                 messageformat('assets/img1.jpg', 'Tunde',
-                    'Are you comming or not', '12:00', '4'),
-                    SizedBox(height: 15.0),
+                    'Are you comming or not, cos i\'m comming home', '2:00', '4'),
                 messageformat('assets/img3.jpg', 'Dominic',
-                    'Are you comming or not', '12:00', '4'),
-                    SizedBox(height: 15.0),
-                messageformat('assets/img2.png', 'Tunde',
-                    'Are you comming or not', '12:00', '4'),
-                    SizedBox(height: 15.0),
+                    'Meet me at home, meet me at home', '1:23', '67'),
+                messageformat('assets/img2.png', 'Ade',
+                    'I am at home', '1:31', '2'),
+                messageformat('assets/icon.jpg', 'Sade',
+                    'Meet me at home', '11:38', ''),
+                messageformat('assets/img1.jpg', 'Tunde Ednut',
+                    'Im around', '11:00', '4'),
                 messageformat('assets/icon.jpg', 'Tunde',
                     'Are you comming or not', '12:00', '4'),
-                    SizedBox(height: 15.0),
-                messageformat('assets/img1.jpg', 'Tunde',
-                    'Are you comming or not', '12:00', '4'),
-                    SizedBox(height: 15.0),
-                messageformat('assets/icon.jpg', 'Tunde',
-                    'Are you comming or not', '12:00', '4'),
-                    SizedBox(height: 15.0),
                 messageformat('assets/img2.png', 'Tunde',
                     'Are you comming or not', '12:00', '4'),
-                    SizedBox(height: 15.0),
                 messageformat('assets/img3.jpg', 'Tunde',
                     'Are you comming or not', '12:00', '4'),
-                    SizedBox(height: 15.0),
                 messageformat('assets/img2.png', 'Tunde',
                     'Are you comming or not', '12:00', '4'),
-                    SizedBox(height: 15.0),
                 messageformat('assets/img2.png', 'Tunde',
                     'Are you comming or not', '12:00', '4'),
-                    SizedBox(height: 15.0),
                 messageformat('assets/img2.png', 'Tunde',
                     'Are you comming or not', '12:00', '4'),
-                    SizedBox(height: 15.0),
                 messageformat('assets/img2.png', 'Tunde',
                     'Are you comming or not', '12:00', '4'),
-                    SizedBox(height: 15.0),
                 messageformat('assets/img2.png', 'Tunde',
                     'Are you comming or not', '12:00', '4')
               ],
             ),
           ),
       ],
-    ));
+    )));
   }
 }
 
 Widget messageformat(String img, String name, String submessage, String time,
     String notification) {
   return Padding(
-    padding: EdgeInsets.only(left: 15, right: 15),
+    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -103,16 +92,10 @@ Widget messageformat(String img, String name, String submessage, String time,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // Hero(
-              //     tag: img,
-                  // child: 
-                  Image(
-                      image: AssetImage(img),
-                      fit: BoxFit.cover,
-                      height: 60,
-                      width: 60
-                    ),
-                      // ),
+              CircleAvatar(
+                radius: 25.0,
+                backgroundImage: AssetImage(img),
+              ),
               SizedBox(width: 15.0),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -122,19 +105,24 @@ Widget messageformat(String img, String name, String submessage, String time,
                     style:
                         TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                   ),
+                  Container(
+                //  width: MediaQuery.of(context).size.width,
+                  child: 
                   Text(
                     submessage,
                     style: TextStyle(
-                        fontSize: 12.0,
-                        fontWeight: FontWeight.w100,
-                        color: Colors.grey,
-                        fontStyle: FontStyle.italic),
+                      fontSize: 12.0,
+                      fontWeight: FontWeight.w100,
+                      color: Colors.grey[1500],
+                      fontStyle: FontStyle.italic),
+                  )
                   )
                 ],
               )
             ],
           ),
         ),
+        SizedBox(width: 10.0),
         Column(
           children: [
             Text(
@@ -142,18 +130,16 @@ Widget messageformat(String img, String name, String submessage, String time,
               style: TextStyle(fontSize: 12.0, color: Colors.grey),
             ),
             Container(
-              height: 15,
-              width: 15,
-              color: Colors.green,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50.0)),
-              child:  Center(child: Text(
-                notification,
-                style: TextStyle(color: Colors.white, fontSize: 9.0),
+              height: 18,
+              width: 18,
+              decoration: BoxDecoration(
+                color: Colors.green,
+                borderRadius: BorderRadius.circular(50.0)),
+                alignment: Alignment.center,
+                child: Text(
+                  notification,
+                  style: TextStyle(color: Colors.white, fontSize: 9.0),
               ), ) 
-              )
-            )
           ],
         )
       ],
