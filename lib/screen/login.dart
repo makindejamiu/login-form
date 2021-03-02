@@ -6,9 +6,6 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
-
-  
-
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   @override
@@ -77,13 +74,13 @@ class _LogInState extends State<LogIn> {
                   SizedBox(height: 30.0),
                   Container(
                     height: 50.0,
-                    child: Material(
-                      borderRadius: BorderRadius.circular(20.0),
-                      shadowColor: Colors.greenAccent,
-                      color: Colors.green,
+                    child: RawMaterialButton(
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                      //shadowColor: Colors.greenAccent,
+                      fillColor: Colors.green,
                       elevation: 7.0,
-                      child: GestureDetector(
-                        onTap: () {
+                      //child: GestureDetector(
+                        onPressed: () {
                           if (usernameController.text.toString().length >= 20) {
                             print('Invalid Name / Password');
                             return;
@@ -94,7 +91,7 @@ class _LogInState extends State<LogIn> {
                           }
                           // if (passwordController.text.toString().isNotEmpty &&
                           //     usernameController.text.toString().length <= 20) {
-                            Navigator.of(context).pushNamed('/home_message');
+                          Navigator.of(context).pushNamed('/nav');
                           // }
 
                           // print(
@@ -111,7 +108,7 @@ class _LogInState extends State<LogIn> {
                         ),
                       ),
                     ),
-                  ),
+                  //),
                   SizedBox(height: 15.0),
                   Container(
                       height: 50.0,
@@ -123,15 +120,20 @@ class _LogInState extends State<LogIn> {
                                   color: Colors.black,
                                   width: 1.0,
                                   style: BorderStyle.solid)),
-                          child: Center(
-                            child: (Text(
-                              'Log In with Facebook',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.bold),
-                            )),
-                          ))),
+                          child: InkWell(
+                              onTap: () {
+                                Navigator.of(context)
+                                    .pushNamed('/profile_image');
+                              },
+                              child: Center(
+                                child: (Text(
+                                  'Log In with Facebook',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.bold),
+                                )),
+                              )))),
                 ],
               ),
             ),
